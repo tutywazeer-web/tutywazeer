@@ -49,6 +49,8 @@ MESSAGES = {
     "FSUB_PHOTO": "https://i.ibb.co/671SqSMt/x.jpg",
     "SHORT_PIC": "https://i.ibb.co/671SqSMt/x.jpg",
     "SHORT": "https://i.ibb.co/671SqSMt/x.jpg"
+    "AUTO_DELETE_MSG": "‼️ Forward the Files to Saved Messages or somewhere else before Downloading it.
+it will get Delete after 30 minutes.‼️"
 }
 
 def LOGGER(name: str, client_name: str) -> logging.Logger:
