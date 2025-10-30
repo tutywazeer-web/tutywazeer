@@ -465,7 +465,7 @@ async def batch_auto_del_notification(bot_username, messages, delay_time, transf
     # Send single countdown notification
     notification_msg = await client.send_message(
         chat_id=chat_id,
-        text=f"<b><i><blockquote>This File is deleting automatically in/n 30 minutes. Forward in your Saved/n Messages..!</b></i></bloackquote>,
+        text=DEL_MSG.format(username=bot_username, time=convert_time(delay_time)),
         disable_web_page_preview=True
     )
     
