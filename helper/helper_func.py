@@ -1,7 +1,7 @@
 import base64
 import re
 import asyncio
-from pyrogram import filters, Client
+from pyrogram import filters, Client 
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.enums import ChatMemberStatus
 from pyrogram.errors import UserNotParticipant, Forbidden, PeerIdInvalid, ChatAdminRequired, FloodWait
@@ -307,12 +307,12 @@ def force_sub(func):
         photo = client.messages.get('FSUB_PHOTO', '')
         if photo:
             msg = await message.reply_photo(
-                caption="<b>ᴡᴀɪᴛ ᴀ sᴇᴄᴏɴᴅ.....</b>", 
+                caption="<b><m>Checking Subscription.....</m></b>", 
                 photo=photo
             )
         else:
             msg = await message.reply(
-                "<code><b>ᴡᴀɪᴛ ᴀ sᴇᴄᴏɴᴅ.....</b></code>"
+                "<code><b><m>Checking Subscription.....</m></b></code>"
             )
         user_id = message.from_user.id
         statuses = await check_subscription(client, user_id)
@@ -367,7 +367,7 @@ def force_sub(func):
         from_link = message.text.split(" ")
         if len(from_link) > 1:
             try_again_link = f"https://t.me/{client.username}/?start={from_link[1]}"
-            buttons.append(InlineKeyboardButton("🔄 Try Again", url=try_again_link))
+            buttons.append(InlineKeyboardButton("🎉 Try Again", url=try_again_link))
 
         # Organize buttons in rows of 1 for better readability
         buttons_markup = InlineKeyboardMarkup([[button] for button in buttons])
@@ -418,7 +418,7 @@ def convert_time(duration_seconds: int) -> str:
 #.........Auto Delete Functions.......#
 #===============================================================#
 
-DEL_MSG = """<b>This File is deleting automatically in <a href="https://t.me/{username}">{time}</a>.. Forward in your Saved Messages..!</b>"""
+DEL_MSG = """<b><i><blockquote>This File is deleting automatically in <a href="https://t.me/{username}">{time}</a>.. Forward in your Saved Messages..!</b></i></blockquote>"""
 
 #Function for provide auto delete notification message
 async def auto_del_notification(bot_username, msg, delay_time, transfer): 
@@ -465,7 +465,7 @@ async def batch_auto_del_notification(bot_username, messages, delay_time, transf
     # Send single countdown notification
     notification_msg = await client.send_message(
         chat_id=chat_id,
-        text=DEL_MSG.format(username=bot_username, time=convert_time(delay_time)),
+        text=f"<b><i><blockquote>This File is deleting automatically in/n 30 minutes. Forward in your Saved/n Messages..!</b></i></bloackquote>,
         disable_web_page_preview=True
     )
     
@@ -487,7 +487,7 @@ async def batch_auto_del_notification(bot_username, messages, delay_time, transf
                 button = [[InlineKeyboardButton(text=name, url=link), InlineKeyboardButton(text="ᴄʟᴏsᴇ •", callback_data="close")]]
                 
                 await notification_msg.edit_text(
-                    text=f"Your Video / File Is Successfully/nDeleted ✅",
+                    text=f"<b><i><blockquote>Your Video / File Is Successfully/nDeleted ✅</blockquote></i></b>",
                     reply_markup=InlineKeyboardMarkup(Get Your File Again!),
                     disable_web_page_preview=False
                 )
